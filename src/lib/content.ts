@@ -36,7 +36,7 @@ export const HERO = {
       { label: "Signals captured", value: "intent · hiring · tech" },
       { label: "Enriched & scored", value: "Clay" },
       { label: "Infra warmed", value: "domains · inboxes" },
-      { label: "Pipelin live", value: "Claude · HeyReach · Instantly" },
+      { label: "Outbound live", value: "Claude · HeyReach · Instantly" },
     ],
     target: "target: 25 demos / week",
   },
@@ -70,13 +70,13 @@ export const MARQUEE: {
 export const PROBLEM = {
   index: "01",
   tag: "The problem",
-  headline: "Traditional Pipelin is breaking.",
+  headline: "Traditional outbound is breaking.",
   subhead:
     "The old GTM model — AEs and SDRs spraying and praying to manufacture pipeline — no longer works. Adding more reps just adds more volume to a channel that's already saturated.",
   cards: [
     {
       title: "Open rates are collapsing",
-      body: "Mass Pipelin has driven inbox engagement to all-time lows. Volume no longer buys attention.",
+      body: "Mass outbound has driven inbox engagement to all-time lows. Volume no longer buys attention.",
     },
     {
       title: "Drowning in AI slop",
@@ -94,7 +94,7 @@ export const APPROACH = {
   tag: "The new approach",
   headline: "Signals-based GTM.",
   subhead:
-    "Instead of scaling headcount and blasting volume, you scale systems: capture the intent signals you already have, enrich and score them automatically, and trigger warm, relevant Pipelin programmatically.",
+    "Instead of scaling headcount and blasting volume, you scale systems: capture the intent signals you already have, enrich and score them automatically, and trigger warm, relevant outbound programmatically.",
   stat: "1 > 10",
   statCaption:
     "One GTM engineer with Claude + Clay outperforms an SDR team of ten.",
@@ -132,7 +132,7 @@ export const APPROACH = {
       kind: "branch",
       items: [
         { label: "Ads", tools: ["google", "linkedin"] },
-        { label: "Pipelin", tools: ["gmail", "linkedin"] },
+        { label: "Outbound", tools: ["gmail", "linkedin"] },
         { label: "Content", tools: ["linkedin"] },
       ],
     },
@@ -160,12 +160,12 @@ export const WHAT_WE_DO = {
     },
     {
       no: "02",
-      title: "Build your GTM Pipelin infrastructure",
+      title: "Build your GTM outbound infrastructure",
       body: "Domains, inboxes, warmups, and LinkedIn profiles — the deliverability backbone for sending at volume without burning your primary domain.",
     },
     {
       no: "03",
-      title: "Run programmatic Pipelin at scale",
+      title: "Run programmatic outbound at scale",
       body: "Signal-triggered campaigns orchestrated across Claude, HeyReach, and Instantly — with the goal of booking 25 new demos every week.",
     },
   ],
@@ -179,7 +179,7 @@ export const HOW_WE_WORK = {
   tag: "How we work",
   headline: "A fractional GTM engineering team, embedded.",
   subhead:
-    "We embed a complete team to build and maintain your Pipelin engine — not a single freelancer, not rented SDRs.",
+    "We embed a complete team to build and maintain your outbound engine — not a single freelancer, not rented SDRs.",
   roles: [
     {
       icon: "compass" as HowWeWorkIcon,
@@ -194,7 +194,7 @@ export const HOW_WE_WORK = {
     {
       icon: "inbox" as HowWeWorkIcon,
       role: "Inbox Managers",
-      body: "Handle responses, FAQs, and quality — keeping Pipelin human where it counts.",
+      body: "Handle responses, FAQs, and quality — keeping outbound human where it counts.",
     },
   ],
 };
@@ -252,7 +252,7 @@ export const ENGAGEMENT = {
     {
       no: "Phase 1",
       title: "Build",
-      body: "Data intelligence layer, scoring models, and Pipelin infrastructure stood up and warmed.",
+      body: "Data intelligence layer, scoring models, and outbound infrastructure stood up and warmed.",
     },
     {
       no: "Phase 2",
