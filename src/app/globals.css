@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Pipelin — design system
+   Reference aesthetic: supermemory.ai
+   - light, cool off-white canvas
+   - electric-lime accent
+   - hairline borders framing every section (left/right rails + dividers)
+   - large, tight black headlines + monospace section tags
+   ========================================================================= */
+
+@theme {
+  /* surfaces */
+  --color-background: #f3f5fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef1f8;
+
+  /* ink */
+  --color-ink: #0a0b10;
+  --color-muted: #565f70;
+  --color-faint: #8b93a3;
+  --color-invert: #ffffff;
+
+  /* borders */
+  --color-line: #e3e7f0;
+  --color-line-strong: #cdd4e1;
+  --color-line-dark: #20283c;
+
+  /* accent — electric lime.
+     The bright lime is for FILLS (buttons, panels, cards, logo tile) which
+     carry dark ink text on top. On the light canvas the lime is invisible as
+     fine text / tiny markers, so `accent-ink` is its darker chartreuse sibling
+     for those uses. `accent-deep` stays a dark band that keeps white text. */
+  --color-accent: #ccff00;
+  --color-accent-hover: #b8e600;
+  --color-accent-soft: #f1ffc2;
+  --color-accent-deep: #243300;
+  --color-accent-ink: #5f7a00;
+
+  /* signal colors (used sparingly in stat visuals / terminal) */
+  --color-success: #1f9d55;
+  --color-lime: #c6f64a;
+  --color-pink: #ff5cc8;
+
+  /* terminal */
+  --color-term: #0b0e18;
+  --color-term-line: #1c2336;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* fluid display scale — calm + controlled, supermemory hero proportions.
+     Smaller max than a true splash headline so a longer line reads as 1–2
+     clean lines instead of dominating the fold. */
+  --text-display: clamp(2rem, 4.5vw, 3.375rem);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.025em;
+
+  --text-h1: clamp(2.25rem, 4.6vw, 4rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.025em;
+
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.02em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@layer components {
+  /* The central framed column — continuous vertical rails down the page,
+     exactly like the supermemory content frame. */
+  .frame {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    background: var(--color-background);
+    border-inline: 1px solid var(--color-line);
+  }
+
+  /* Inset padding shared by section content blocks. */
+  .pad-x {
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  /* Monospace eyebrow / tag styling. */
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+}
+
+/* ---- marquee ---- */
+@keyframes oo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: oo-marquee 52s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+  /* leave a static hairline rail; drop the travelling pulse */
+  .oo-spine::after {
+    display: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* subtle dotted texture used on hero / accent panels (supermemory dot grid) */
+.dot-grid {
+  background-image: radial-gradient(var(--color-line-strong) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* light dots for dark panels (e.g. the engagement goal band) */
+.dot-grid-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* dark dots for bright lime panels (e.g. the closing CTA) */
+.dot-grid-accent {
+  background-image: radial-gradient(rgba(10, 11, 16, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ---- Pipelin logo ---- */
+
+/* The brand mark tile — a neon-lime fill carrying the dark-ink glyph. The
+   diagonal gradient echoes the reference logo's sheen but stays on our lime
+   accent rather than its green→teal. */
+.oo-logo-tile {
+  background: linear-gradient(
+    135deg,
+    #e4ff66 0%,
+    var(--color-accent) 55%,
+    var(--color-accent-hover) 100%
+  );
+}
+
+/* ---- client brand marks ---- */
+
+/* Coworker.ai brand orb — lime→teal gradient mark shown beside the name */
+.coworker-orb {
+  background: linear-gradient(120deg, #d1fd81 0.6%, #1eb7c9 95%);
+}
+
+/* Future Path AI logotype mark — pink→purple gradient stops for the inline SVG */
+.fpai-mark {
+  --fpai-from: #f58ef4;
+  --fpai-to: #5d19e0;
+}
+
+/* Messageworks logotype mark — orange burst icon beside the currentColor logotype */
+.mw-mark {
+  --mw-accent: #f57430;
+}
+
+/* SkipdialAI logotype mark — light→dark purple gradient sweep for the inline SVG */
+.skipdial-mark {
+  --sd-from: #9f81fd;
+  --sd-to: #6946eb;
+}
+
+/* ---- stack tool logos ----
+   Full brand lockups (mark + wordmark) shown for each tool in the stack (see
+   ToolLogo). Most carry their native colors inline; the two single-color
+   wordmarks below paint with `currentColor` so brand hex never lives inline.
+   Clay is a raster lockup (next/image); HeyReach keeps its multi-color signal
+   palette as CSS vars. */
+
+/* HubSpot — single-color orange wordmark + sprocket. */
+.tl-hubspot {
+  color: #ff4800;
+}
+
+/* Claude — black wordmark with the clay-orange starburst mark. */
+.tl-claude {
+  color: var(--color-ink);
+  --swatch--clay: #d97757;
+}
+
+/* HeyReach — ink "reaching" mark with signal lines fanning red→blue, each
+   fading into the surface so the lines read as motion on the white tile. */
+.tl-heyreach {
+  --hr-red: #ff2832;
+  --hr-amber: #ffbc00;
+  --hr-green: #78ba3a;
+  --hr-sky: #37b2ff;
+  --hr-blue: #388eff;
+}
+
+/* ---- workflow diagram connectors ---- */
+
+/* The straight rail between two flow nodes: a hairline in line-strong carrying
+   a lime pulse that travels downward, echoing the "flowing" connectors in the
+   reference. Curved fan connectors are drawn as SVG in WorkflowDiagram. */
+.oo-spine {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-line-strong);
+}
+
+.oo-spine::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 55%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-accent),
+    transparent
+  );
+  animation: oo-flow-down 2.2s linear infinite;
+}
+
+@keyframes oo-flow-down {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: translateY(260%);
+  }
+}
