@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
  * drawn in dark ink on a rounded neon-lime tile (.oo-logo-tile). This follows
  * the design-system rule that the lime accent is a FILL that carries ink on
  * top — so the mark stays legible on both the light canvas and dark panels.
- * Wordmark: "Outbound" in ink + "Ops" in the chartreuse accent-ink sibling
+ * Wordmark: "Pipelin" in ink + "Pipelin" in the chartreuse accent-ink sibling
  * (pure lime is invisible as fine text on the light canvas).
  */
 export function Logo({
@@ -46,8 +46,7 @@ export function Logo({
         </svg>
       </span>
       <span>
-        Outbound
-        <span className={invert ? "text-accent" : "text-accent-ink"}>Ops</span>
+        Pipelin
       </span>
     </span>
   );
